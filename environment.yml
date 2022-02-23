@@ -1,0 +1,15 @@
+name: iRaPCA
+channels:
+- rdkit
+- conda-forge
+- defaults
+dependencies:
+    - rdkit
+    - pip
+    - pip:
+        - scikit-learn
+        - molvs
+        - streamlit==1.5.0
+        - mordred
+        - plotly
+        - validclust

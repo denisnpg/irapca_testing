@@ -1,0 +1,7 @@
+streamlit==1.5.0
+rdkit==2021.09.1
+molvs
+mordred
+validclust
+scikit-learn
+plotly
