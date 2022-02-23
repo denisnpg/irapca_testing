@@ -13,3 +13,5 @@ dependencies:
         - mordred
         - plotly
         - validclust
+        - pandas==1.4.1
+        - numpy==1.22.2
