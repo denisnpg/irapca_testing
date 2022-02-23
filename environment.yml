@@ -5,6 +5,8 @@ channels:
 - defaults
 dependencies:
     - rdkit
+    - pandas==1.4.1
+    - numpy==1.22.2
     - pip
     - pip:
         - scikit-learn
@@ -13,5 +15,4 @@ dependencies:
         - mordred
         - plotly
         - validclust
-        - pandas==1.4.1
-        - numpy==1.22.2
+
