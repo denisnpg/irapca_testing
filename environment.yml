@@ -4,8 +4,9 @@ channels:
 - conda-forge
 - defaults
 dependencies:
+    - python=3.9
     - libgcc=5.2.0
-    - rdkit
+    - rdkit=2021.09.1
     - pandas=1.4.1
     - pip
     - pip:
