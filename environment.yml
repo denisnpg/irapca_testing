@@ -6,8 +6,6 @@ channels:
 dependencies:
     - python==3.9.7
     - rdkit
-    - pandas==1.4.1
-    - numpy==1.22.2
     - pip
     - pip:
         - scikit-learn
