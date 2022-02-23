@@ -5,11 +5,11 @@ channels:
 - defaults
 dependencies:
     - python==3.9.7
-    - rdkit
     - pandas==1.4.1
     - numpy==1.22.2
     - pip
     - pip:
+        - rdkit==2021.09.1
         - scikit-learn
         - molvs
         - streamlit==1.5.0
