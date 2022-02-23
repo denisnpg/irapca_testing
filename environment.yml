@@ -6,6 +6,7 @@ channels:
 dependencies:
     - libgcc=5.2.0
     - rdkit
+    - pandas=1.4.1
     - pip
     - pip:
         - scikit-learn
