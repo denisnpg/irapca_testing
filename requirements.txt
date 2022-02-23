@@ -6,4 +6,4 @@ validclust
 scikit-learn
 plotly
 pandas==1.4.1
-nummpy==1.22.2
+numpy==1.22.2
