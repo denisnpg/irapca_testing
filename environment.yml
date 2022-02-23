@@ -1,12 +1,13 @@
 name: iRaPCA
 channels:
+- rdkit
 - conda-forge
 - defaults
 dependencies:
     - python==3.9.7
     - pandas==1.4.1
     - numpy==1.22.2
-    - rdkit
+    - rdkit==rdkit=2021.09.1
     - pip
     - pip:
         - scikit-learn
