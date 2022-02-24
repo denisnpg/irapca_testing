@@ -288,7 +288,7 @@ def calcular_descriptores(uploaded_file_1,descriptores_calculados):
         descriptores = descriptores.dropna(axis=1)
         if descriptores_calculados != "Si":
             st.markdown(":point_down: **Here you can dowload the calculated descriptors**", unsafe_allow_html=True)
-            st.markdown(filedownload3(descriptores), unsafe_allow_html=True)
+            #st.markdown(filedownload3(descriptores), unsafe_allow_html=True)
         st.write("The initial dataset has " + str(descriptores.shape[0]) + " molecules and " + str(descriptores.shape[1]) + " descriptors")
         
         return descriptores,previuos_data 
@@ -739,7 +739,7 @@ def clustering_final_function(uploaded_file_1):
     else:
         descriptores, previuos_data = calcular_descriptores(uploaded_file_1,vuelta)
     lista_descriptores.append(descriptores)
-
+    st.cache()
     while len(lista_nuevas_moleculas)>0 and vuelta <= vueltas_maximas:
 
         lista_subsets_ok = []
@@ -795,7 +795,7 @@ def clustering_final_function(uploaded_file_1):
             validation_all.append(validation_round)
             lista_cluster_moleculas.append(cluster_moleculas)
             lista_final_conteo.append(final_conteo)
-
+        st.cache()
         if vuelta != 1:
             sunburnt_nuevos = sunburnt_nuevos.to_frame()
             sunburnt_nuevos.rename(columns={0: f'Cluster, padre, V{vuelta}'},inplace = True)
@@ -821,7 +821,7 @@ def clustering_final_function(uploaded_file_1):
             lista_descriptores.append(descriptores_nuevas_molec)
     
         vuelta += 1
-        
+    st.cache()    
     dataframe_final = pd.DataFrame.from_dict(moleculas_compiladas, orient = 'index')
     dataframe_final.rename(columns = {0: 'CLUSTER'}, inplace = True)
     dataframe_final['key'] = dataframe_final.index
