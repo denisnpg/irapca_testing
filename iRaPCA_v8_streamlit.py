@@ -317,7 +317,6 @@ def descriptores_baja_variancia(descriptores, vuelta, threshold_variance: float)
 def generar_subset(descriptores_ok, num_subsets: int, coef_correlacion: str, limite_correlacion: float, vuelta):
     subsets_ok=[]
     i=0
-    st.write(i)
     while (i < num_subsets): 
         if random_subspace_seed == True:
             subset= descriptores_ok.sample(num_descriptores,axis=1)
@@ -331,7 +330,6 @@ def generar_subset(descriptores_ok, num_subsets: int, coef_correlacion: str, lim
         i = i+1
         st.write(i)
         subsets_ok.append(curado)
-        st.write(curado)
     #     tamanios = []
     #     # st.write(curado)
     #     for x in subsets_ok:
@@ -374,7 +372,7 @@ def clustering(subsets_ok, min_desc_subset: int, max_desc_subset: int, range_n_c
     siluetas = []
     subsets_seleccionados = []
     for i, subset in enumerate(subsets_ok):
-        
+        st.write(i)
         if min_desc_subset < len(subset.columns) < max_desc_subset:
             descriptores_normalizados = normalizar_descriptores(subset)
             if max_n_clusters > len(descriptores_normalizados.index):
