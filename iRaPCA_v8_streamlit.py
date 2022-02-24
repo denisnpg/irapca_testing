@@ -329,7 +329,9 @@ def generar_subset(descriptores_ok, num_subsets: int, coef_correlacion: str, lim
         curado=subset.drop(subset[to_drop], axis=1)
         total_molec_subset = curado.shape[0]
         i = i+1
+        st.write(i)
         subsets_ok.append(curado)
+        st.write(curado)
     #     tamanios = []
     #     # st.write(curado)
     #     for x in subsets_ok:
