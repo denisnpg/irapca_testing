@@ -859,9 +859,10 @@ def clustering_final_function(uploaded_file_1):
     plot = bar_plot_counts(dataframe_final_1)
     
     st.markdown(":point_down: **Here you can download the cluster assignations**", unsafe_allow_html=True)
+    st.markdown(filedownload(dataframe_final), unsafe_allow_html=True)
     st.download_button(
      label="Download data as CSV",
-     data=dataframe_final,
+     data=filedownload(dataframe_final),
      file_name='large_df.csv',
      mime='text/csv',)
     #st.markdown(filedownload(dataframe_final), unsafe_allow_html=True)
