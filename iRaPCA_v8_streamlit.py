@@ -317,6 +317,7 @@ def descriptores_baja_variancia(descriptores, vuelta, threshold_variance: float)
 def generar_subset(descriptores_ok, num_subsets: int, coef_correlacion: str, limite_correlacion: float, vuelta):
     subsets_ok=[]
     i=0
+    st.write(i)
     while (i < num_subsets): 
         if random_subspace_seed == True:
             subset= descriptores_ok.sample(num_descriptores,axis=1)
