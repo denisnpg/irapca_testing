@@ -68,7 +68,7 @@ and the best subset of descriptors are selected from plots of silhouette coeffic
 Different validation metrics can be downloaded once the process has finished. A number of graphs may be built and readily downloaded
 through a simple click. 
 
-The tool uses the following packages [RDKIT](https://www.rdkit.org/docs/index.html), [Mordred](https://github.com/mordred-descriptor/mordred), [Scikit-learn](https://scikit-learn.org/stable/), [Plotly](https://plotly.com/python/),[MolVS](https://github.com/mcs07/MolVS),[validclust](https://github.com/crew102/validclust)
+The tool uses the following packages [RDKIT](https://www.rdkit.org/docs/index.html), [Mordred](https://github.com/mordred-descriptor/mordred), [Scikit-learn](https://scikit-learn.org/stable/), [Plotly](https://plotly.com/python/), [MolVS](https://github.com/mcs07/MolVS), [validclust](https://github.com/crew102/validclust)
 
 The next workflow summarizes the steps performed by this method:
     
