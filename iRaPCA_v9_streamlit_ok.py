@@ -7,7 +7,6 @@ Created on Tue Jul 27 11:26:28 2021
 
 # iRaPCA WebApp
 
-
 #%%
 # Needed packages
 import streamlit as st
@@ -218,24 +217,19 @@ def calcular_descriptores(uploaded_file_1,descriptores_calculados):
                     rows_to_retain.append(i -1)
                 else:
                     suppl.append(mol)
-                    rows_to_retain.append(i -1)
 
             except:
-                # st.write(f'Molecule {i} could not be standardized')
                 problematic_smiles.append(i)
-                # suppl.append(molecule)
         if ignore_error == False and len(problematic_smiles) > 0:
             st.error("*Oh no! There is a problem with descriptor calculation of some SMILES.*  :confused:")
             st.markdown(f"*Please check your SMILES number: {str(problematic_smiles)}*")
             st.stop()
-
+        
         else:
-            if len(problematic_smiles) > 0:
+            if len(problematic_smiles) > 0 and smiles_standardization == True:
                 st.markdown("Lines " + str(problematic_smiles) + " have problematic (or empty) SMILES. We have omitted them.")
             else:
-                st.markdown("All SMILES have been submitted correctly")
-
-        previuos_data = df_initial.iloc[rows_to_retain]
+                pass
             
         calc = Calculator(descriptors, ignore_3D=True) 
         t = st.empty()
@@ -253,15 +247,16 @@ def calcular_descriptores(uploaded_file_1,descriptores_calculados):
                             solo_nombre = pd.DataFrame.from_dict(data=solo_nombre,orient="index")
                             data1x = pd.concat([data1x, solo_nombre],axis=1, ignore_index=True)
                            
-                            t.markdown("Calculating descriptors " + str(i+1) +"/" + str(len(suppl)))   
+                            t.markdown("Calculating descriptors " + str(i+1) +"/" + str(len(suppl))) 
+                            if smiles_standardization == False:
+                                rows_to_retain.append(i)
                         except:
                             st.error("**Oh no! There is a problem with descriptor calculation of some SMILES.**  :confused:")
                             st.markdown("**Please check your SMILES number: **" + str(i+1))
-                            st.markdown(" :point_down: **Try using our standarization tool to fix the SMILES**")
-                            st.write("[LISTo](https://share.streamlit.io/cbellera/listo/main/LISTo_v1.py)") 
                             st.stop()
                     else:
                         pass
+        previuos_data = df_initial.iloc[rows_to_retain]
 
         t.markdown("Descriptor calculation have FINISHED")
         data1x = data1x.T
@@ -271,10 +266,7 @@ def calcular_descriptores(uploaded_file_1,descriptores_calculados):
         descriptores = descriptores.apply(pd.to_numeric, errors = 'coerce') 
         descriptores = descriptores.dropna(axis=0,how="all")
         descriptores = descriptores.dropna(axis=1)
-        #if descriptores_calculados != "Si":
-        #    st.markdown(":point_down: **Here you can dowload the calculated descriptors**", unsafe_allow_html=True)
-        #    st.markdown(filedownload3(descriptores), unsafe_allow_html=True)
-        st.write("The initial dataset has " + str(descriptores.shape[0]) + " molecules and " + str(descriptores.shape[1]) + " descriptors")
+        st.write(str(descriptores.shape[0]) + " molecules were loaded correctly and " + str(descriptores.shape[1]) + " descriptors were calculated")
         
         return descriptores,previuos_data 
     
@@ -291,7 +283,6 @@ def descriptores_baja_variancia(descriptores, vuelta, threshold_variance: float)
     if vuelta == 1:
         st.write(str(descriptores_ok.shape[1]) + " descriptors have passed the variance threshold")
         st.markdown("**Step 2: Clustering**")
-    # st.markdown(filedownload3(descriptores_ok), unsafe_allow_html=True)
         
     return descriptores_ok
 
@@ -359,7 +350,6 @@ def clustering(subsets_ok, min_desc_subset: int, max_desc_subset: int, range_n_c
                 range_n_clusters = list(range(min_n_clusters,len(descriptores_normalizados.index),1))
             siluetas = PCA_clustering(descriptores_normalizados, range_n_clusters, num_pca, siluetas)
             subsets_seleccionados.append(i)
-    # st.write("- Subsets with a number of descriptors between the limits: " + str(len(subsets_seleccionados)))
 
     tabla_final = pd.DataFrame(siluetas).T
     tabla_final.columns = subsets_seleccionados
