@@ -287,9 +287,9 @@ def calcular_descriptores(uploaded_file_1,descriptores_calculados):
         descriptores = descriptores.apply(pd.to_numeric, errors = 'coerce') 
         descriptores = descriptores.dropna(axis=0,how="all")
         descriptores = descriptores.dropna(axis=1)
-        if descriptores_calculados != "Si":
-            st.markdown(":point_down: **Here you can dowload the calculated descriptors**", unsafe_allow_html=True)
-            st.markdown(filedownload3(descriptores), unsafe_allow_html=True)
+        #if descriptores_calculados != "Si":
+        #    st.markdown(":point_down: **Here you can dowload the calculated descriptors**", unsafe_allow_html=True)
+        #    st.markdown(filedownload3(descriptores), unsafe_allow_html=True)
         st.write("The initial dataset has " + str(descriptores.shape[0]) + " molecules and " + str(descriptores.shape[1]) + " descriptors")
         
         return descriptores,previuos_data 
