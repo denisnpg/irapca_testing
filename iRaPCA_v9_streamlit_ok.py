@@ -53,7 +53,7 @@ st.image(image)
 
 st.write("[![Website](https://img.shields.io/badge/website-LIDeB-blue)](https://lideb.biol.unlp.edu.ar)[![Twitter Follow](https://img.shields.io/twitter/follow/LIDeB_UNLP?style=social)](https://twitter.com/intent/follow?screen_name=LIDeB_UNLP)")
 st.subheader(":pushpin:" "About Us")
-st.markdown("We are a drug discovery team with an interest in the development of publicly available open-source customizable cheminformatics tools to be used in computer-assisted drug discovery. We belong to the Laboratory of Bioactive Research and Development (LIDeB) of the National University of La Plata (UNLP), Argentina. Our research group is focused on computer-guided drug repurposing and rational discovery of new drug candidates to treat epilepsy and neglected tropical diseases.")
+st.markdown("We are a drug discovery team with an interest in the development of publicly available open-source customizable cheminformatics tools to be used in computer-assisted drug discovery. We belong to the Laboratory of Bioactive Compounds Research and Development (LIDeB) of the National University of La Plata (UNLP), Argentina. Our research group is focused on computer-guided drug repurposing and rational discovery of new drug candidates to treat epilepsy and neglected tropical diseases.")
 
 
 # Introduction
@@ -77,8 +77,8 @@ The next workflow summarizes the steps performed by this method:
 image = Image.open('clustering_irapca_workflow.png')
 st.image(image, caption='Clustering Workflow')
 
-st.subheader(":rocket:" "**Fast Tutorial** " "[iRaPCA](https://www.youtube.com/watch?v=6HoBdFDY9Ic&ab_channel=LIDeBUNLP)")
-st.markdown(" ")
+#st.subheader(":rocket:" "**Fast Tutorial** " "[iRaPCA](https://www.youtube.com/watch?v=6HoBdFDY9Ic&ab_channel=LIDeBUNLP)")
+#st.markdown(" ")
 
 #st.markdown("""
 #         **To cite the application, please reference XXXXXXXXX**
@@ -262,22 +262,6 @@ def calcular_descriptores(uploaded_file_1,descriptores_calculados):
                             st.stop()
                     else:
                         pass
-                        # if ignore_error == True:
-                            # st.markdown("In line " + str(i+1) + " you have a problematic (or empty) SMILES. We have omitted it")
-                        # else:
-                        #     st.error("**Oh no! There is a problem with descriptor calculation of one SMILES.**  :confused:")
-                        #     st.markdown("**Please check your SMILES number: **" + str(i+1))
-                        #     st.markdown(" :point_down: **Try using our standarization tool before clustering **")
-                        #     st.write("[LIDeB Standarization tool](https://share.streamlit.io/capigol/lbb-game/main/juego_lbb.py)")
-                        #     st.stop()
-        # if ignore_error == True:
-        #     if len(problematic_smiles) > 0:
-        #         st.markdown("Lines " + str(problematic_smiles) + " have problematic (or empty) SMILES. We have omitted them.")
-        # else:
-        #     st.error("**Oh no! There is a problem with descriptor calculation of some SMILES.**  :confused:")
-        #     st.markdown("**Please check your SMILES number: **" + str(problematic_smiles))
-        #     st.markdown(" :point_down: **Try using our standarization tool to fix the SMILES**")
-        #     st.write("[LISTo](https://share.streamlit.io/cbellera/listo/main/LISTo_v1.py)") 
 
         t.markdown("Descriptor calculation have FINISHED")
         data1x = data1x.T
